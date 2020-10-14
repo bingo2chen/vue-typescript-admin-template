@@ -24,7 +24,6 @@ for (let i = 0; i < playerCount; i++) {
   })
 }
 
-
 function genWantoplay() {
   let wanttoplay: Set<Hero> = new Set()
   while (wanttoplay.size < 3) {
@@ -47,7 +46,6 @@ export const getPlayers = (req: Request, res: Response) => {
     return true
   })
 
-
   // 分页
   const pageList = mockList.filter((item, index) => index < limit * page && index >= limit * (page - 1))
 
@@ -61,8 +59,8 @@ export const getPlayers = (req: Request, res: Response) => {
 }
 
 export const getPlayer = (req: Request, res: Response) => {
-  const {id} = req.params
-  for(const player of playerList) {
+  const { id } = req.params
+  for (const player of playerList) {
     if (player.id.toString() === id) {
       return res.json({
         code: 20000,
@@ -84,7 +82,6 @@ export const getPlayer = (req: Request, res: Response) => {
 export const createPlayer = (req: Request, res: Response) => {
   // 新增的英雄数据
   const { player } = req.body
-  
   // 直接返回
   res.json({
     code: 20000,
@@ -94,14 +91,12 @@ export const createPlayer = (req: Request, res: Response) => {
   })
 }
 
-
 // 更新玩家
 export const updatePlayer = (req: Request, res: Response) => {
   // 新增的英雄数据
   const { id } = req.params
   const { player } = req.body
-  
-  for(const player of playerList) {
+  for (const player of playerList) {
     if (player.id.toString() === id) {
       return res.json({
         code: 20000,
@@ -122,6 +117,6 @@ export const updatePlayer = (req: Request, res: Response) => {
 export const deletePlayer = (req: Request, res: Response) => {
   // 直接返回
   res.json({
-    code: 20000,
+    code: 20000
   })
 }

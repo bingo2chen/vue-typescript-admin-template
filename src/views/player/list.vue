@@ -7,13 +7,12 @@
         :placeholder="$t('player.accountname')"
         style="width: 200px"
         @keyup.enter.native="handleFilter"
-      ></el-input>
+      />
       <el-button
         type="primary"
         icon="el-icon-search"
         @click="handleFilter"
-      >{{$t('player.btnFilter')}}</el-button>
-
+      >{{ $t('player.btnFilter') }}</el-button>
       <!-- 新增按钮 -->
       <el-button type="success" icon="el-icon-edit" @click="handleCreate">{{$t('player.btnCreate')}}</el-button>
     </div>
@@ -62,7 +61,7 @@ import { Player } from "../../api/types";
 import Pagination from "@/components/Pagination/index.vue";
 
 @Component({
-  name: "PlayerList",
+  name: 'PlayerList',
   components: {
     Pagination
   }
@@ -114,23 +113,24 @@ export default class list extends Vue {
 
   // 删除玩家
   handleDelete(scope: any) {
-    const {$index, row} = scope;
-    this.$confirm('确定删除玩家信息？', '警告', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning'
-    }).then(async () => {
-      await deletePlayer(row.id)
-
-      this.list.splice($index, 1)
-      this.$message({
-        type: 'success',
-        message: '删除成功！'
-      })
-    }).catch(err => {
-      console.error(err);
-      
+    const { $index, row } = scope;
+    this.$confirm("确定删除玩家信息？", "警告", {
+      confirmButtonText: "确定",
+      cancelButtonText: "取消",
+      type: "warning"
     })
+      .then(async () => {
+        await deletePlayer(row.id);
+
+        this.list.splice($index, 1);
+        this.$message({
+          type: "success",
+          message: "删除成功！"
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 }
 </script>
